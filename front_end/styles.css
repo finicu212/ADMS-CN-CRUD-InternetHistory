@@ -1,0 +1,16 @@
+.entry
+{
+	display:  inline-block;
+	float: left;
+	width:  100%;
+}
+
+h3
+{
+	display: inline-block;
+}
+
+p
+{
+	display: inline-block;
+}
