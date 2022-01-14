@@ -3,12 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Ambient Data Monitoring System</title>
+	<title>Ambient Data Monitoring System Of All Users</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="login.js"></script>
 </head>
 <body>
-	<div id="main">
-		<script src="src.js"></script>
-	</div>
+	<h1>Login page</h1>
+	<br><br>
+	<a href="admin.html"><button type="button">Login as admin</button></a>
+	<br><br>
+	<form action="user.html" method="POST">
+        <label>Username</label>
+        <input type="text" id="name" name="name" placeholder="Username" required="true">
+        <input type="submit" value="Login as user">
+    </form>
 </body>
 </html>

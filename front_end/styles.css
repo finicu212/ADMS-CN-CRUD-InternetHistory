@@ -5,6 +5,11 @@
 	width:  100%;
 }
 
+h1
+{
+	text-align: center;
+}
+
 h3
 {
 	display: inline-block;
