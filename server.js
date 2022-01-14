@@ -8,12 +8,16 @@ const mongoose = require('mongoose');
 // create express app
 var app = express();
 app.use(cors())
+app.engine('html', require('ejs').renderFile);
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse application/json
 app.use(bodyParser.json())
+
+// use css
+app.use(express.static(__dirname + "/front_end"))
 
 mongoose.Promise = global.Promise;
 
@@ -29,9 +33,15 @@ mongoose.connection.once('open', function() {
     console.log("Successfully connected to the database");
 })
 
-// define a simple route
+// serve the "login" page on server start
 app.get('/', function(req, res){
-    res.json({"message": "Welcome to web history managing application. CN project for RSA"});
+    res.sendFile(__dirname + '/front_end/index.html');
+});
+
+// on user login, access user.html with given username
+app.post("/postForm", function (req, res) {
+    var name = req.body.username;
+    res.render(__dirname + "/front_end/user.html", {name:name});
 });
 
 require('./app/routes/user.routes.js')(app);

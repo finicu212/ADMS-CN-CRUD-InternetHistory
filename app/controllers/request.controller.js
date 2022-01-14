@@ -41,13 +41,31 @@ exports.delete = function(req, res) {
 
 //User.findOne({"userIp": req.params.userIp}).exec(function(err, data)
 
-exports.findByIp = function(req, res) {
-    Request.find({"userIp": req.params.userIp}).exec(function (err, docs) {
+var User = require('../models/user.model.js');
+
+exports.findByUser = function(req, res) {
+    var queriedName = req.params.userName;
+    var foundIp = "";
+    console.log("Looking for all requests by " + queriedName)
+
+    User.findOne({"userName": queriedName}).exec(function(err, data) {
         if(err) {
-            res.status(500).send({message: "Could not find requests from ip " + req.params.userIp});
+            foundIp = "";
+            console.log("error");
         } else {
-            console.log(req)
-            res.send(docs)
+            foundIp = data.userIp;
+            console.log("Found ip by query: " + foundIp)
+        }
+    });
+
+    foundIp = foundIp.replace('.', '\\.'); // escape the dots in found user's IP addres
+
+    Request.find({"userIp": "86\.120\.19\.176"}).exec(function (err, docs) {
+        if(err) {
+            res.status(500).send({message: "Could not find requests from " + req.params.userName});
+        } else {
+            console.log(docs);
+            res.send(docs);
         }
     });
 };

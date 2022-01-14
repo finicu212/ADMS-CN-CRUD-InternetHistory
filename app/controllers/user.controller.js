@@ -30,9 +30,9 @@ exports.findAll = function(req, res) {
 };
 
 exports.findOne = function(req, res) {
-    User.findOne({"userIp": req.params.userIp}).exec(function(err, data) {
+    User.findOne({"userName": req.params.userName}).exec(function(err, data) {
         if(err) {
-            res.status(500).send({message: "Could not retrieve user with ip " + req.params.userIp});
+            res.status(500).send({message: "Could not retrieve user with name " + req.params.userName});
         } else {
             res.send(data);
         }
@@ -42,9 +42,9 @@ exports.findOne = function(req, res) {
 
 exports.delete = function(req, res) {
     // Delete a note with the specified noteId in the request
-    User.deleteOne({"userIp": req.params.userIp}).exec(function(err, data) {
+    User.deleteOne({"userName": req.params.userName}).exec(function(err, data) {
         if(err) {
-            res.status(500).send({message: "Could not delete user with ip " + req.params.id});
+            res.status(500).send({message: "Could not delete user with userName " + req.params.userName});
         } else {
             res.send({message: "user deleted successfully!"})
         }

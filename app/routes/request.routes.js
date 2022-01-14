@@ -11,6 +11,6 @@ module.exports = function(app) {
     // delete request
     app.delete('/request/:requestId', requests.delete);
 
-    // Retrieve all requests using ip
-    app.get('/request/:userIp', requests.findByIp);
+    // Retrieve all requests made by user
+    app.get('/requests/:userName', requests.findByUser);
 }
