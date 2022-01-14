@@ -40,11 +40,11 @@ For the DB we use NoSQL MongoDB. We have two models: `user` and `request`. A req
 Most important:
 
 ```
-GET all history:		http://localhost:3000/requests
-GET all users:		  http://localhost:3000/users
-GET specific user:	http://localhost:3000/users/:ip
-POST new history:   http://localhost:3000/request
-POST new user:      http://localhost:3000/user
+GET all history: http://localhost:3000/requests
+GET all users: http://localhost:3000/users
+GET specific user: http://localhost:3000/users/:ip
+POST new history: http://localhost:3000/request
+POST new user: http://localhost:3000/user
 ```
 (and more)
 
